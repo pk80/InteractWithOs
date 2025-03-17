@@ -2,7 +2,9 @@ import datetime
 import os
 
 import areas
+import data_streams
 import mycsv
+import myregex
 import system_health
 import rw_files
 from rw_files import new_dir
@@ -49,8 +51,8 @@ def main():
     # # reading from csv file
     # mycsv.read_csv('assets/software.csv')
     # # writing data to csv
-    emp_list = [['praveen kumar', '8686960907', 'DevOps Eng'], ['praveen', '9502551905', 'DevOps Eng']]
-    mycsv.write_csv('assets/emp.csv', emp_list)
+    # emp_list = [['praveen kumar', '8686960907', 'DevOps Eng'], ['praveen', '9502551905', 'DevOps Eng']]
+    # mycsv.write_csv('assets/emp.csv', emp_list)
     # # deletes the file
     # mycsv.delete_csv('assets/emp.csv')
 
@@ -60,6 +62,23 @@ def main():
     #          {"name": "Charlie Grey", "username": "greyc", "department": "Development"}]
     # keys = ["name", "username", "department"]
     # mycsv.write_dict_csv('assets/output.csv', users, keys)
+
+    # LAB WORK 2
+    # call the functions: contains_domain() and replace_domain from the main()
+    # write the updated list to a CSV file in the data directory
+    # csv_file_location = '/home/student/data/user_emails.csv'
+    # report_file = '/home/student/data/updated_user_emails.csv'
+    # old_domain, new_domain = 'abc.edu', 'xyz.edu'
+    # if myregex.contains_domain(address, old_domain):
+    #     print(myregex.replace_domain(address, old_domain, new_domain))
+    # else:
+    #     print('Domain does not exit!')
+    # csv_file = 'assets/user_emails.csv'
+    # report_file = 'assets/updated_user_emails.csv'
+    # myregex.update_csv(csv_file, report_file, old_domain, new_domain)
+
+    # Module 3
+    data_streams.cmd_line_args()
 
 
 if __name__ == '__main__':

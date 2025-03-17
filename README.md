@@ -203,5 +203,155 @@ outputs['current_directory'] = os.getcwd()
 - parsing a file: analysing file's content to correctly structure the data
 
 #### Reading and writing CSV files with dictionaries
+
 - csv.DictReader()
 - csv.DictWriter()
+
+## MODULE 3
+
+### Regular Expressions
+
+- Also known as `regex` or `regexp`
+- It is a search query for text that's expressed in string pattern
+- It allows us to search for a text for string matching a specific pattern
+- `grep` is case-sensitive
+- `grep` is a command line regex tool
+- Search is executed on the line basis but not on individual word
+
+```
+% grep thon <filename>
+% grep -i thon <filename> # use -i to avoid case-sensitivity
+```
+
+- Reserved Characters : give extra meaning to the patterns that we create
+    - Exs:
+        - . sign : dot matches any character, it is said to ba a wildcard
+        - ^ sign : caret/circumflex indicates the beginning, it is said to be an anchor character
+        - $ sign : dollar indicates the end of the line, it is said to be an anchor character
+
+```
+% grep l.rts <filename>
+% grep ^fruit <filename>
+% grep cat$ <filename>
+```
+
+### Basic Regular Expressions
+
+#### Simple matching
+
+- Module used in `re`
+- re.search(pattern, string) returns a match object
+- `r` in pattern indicates raw-string (meaning no special chars)
+- raw-string and normal string are exactly the same
+- it's a good practise to use raw-strings in regular expressions in python
+- `None` is a special value that python uses to show that there's not actual value there
+- re.IGNORECASE option in search parameters ignores the case sensitivity
+
+#### Wildcards and Character classes
+- 
+
+```
+# Wildcards and Character classes
+% print(re.search(r"[Pp]ython", "Python"))
+% print(re.search(r"[a-z]way", "The end of the highway"))
+% print(re.search(r"[a-z]way", "What a way to go"))
+% print(re.search("cloud[a-zA-Z0-9]", "cloudy"))
+% print(re.search("cloud[a-zA-Z0-9]", "cloud9"))
+
+% print(re.search(r"[^a-zA-Z]", "This is a sentence with spaces."))
+% print(re.search(r"[^a-zA-Z ]", "This is a sentence with spaces."))
+
+% print(re.search(r"cat|dog", "I like cats."))
+% print(re.search(r"cat|dog", "I love dogs!"))
+% print(re.search(r"cat|dog", "I like both dogs and cats."))
+
+% print(re.search(r"cat|dog", "I like cats."))
+% print(re.search(r"cat|dog", "I love dogs!"))
+% print(re.search(r"cat|dog", "I like both dogs and cats."))
+% print(re.findall(r"cat|dog", "I like both dogs and cats."))
+
+# Repetition Qualifiers
+print(re.search(r"Py.*n", "Pygmalion"))
+print(re.search(r"Py.*n", "Python Programming"))
+print(re.search(r"Py[a-z]*n", "Python Programming"))
+print(re.search(r"Py[a-z]*n", "Pyn"))
+
+print(re.search(r"o+l+", "goldfish"))
+print(re.search(r"o+l+", "woolly"))
+print(re.search(r"o+l+", "boil"))
+
+print(re.search(r"p?each", "To each their own"))
+print(re.search(r"p?each", "I like peaches"))
+```
+
+- Character classes : written insided square brackets
+- To match any characters that aren't in a group use caret sign inside square brackets like this [^a-z]
+- To match either we use a pipe symbol like this `cat|dog`
+- `.*` means it matches any character repeated as many times as possible including zero. This behavior in programming
+  terms is called as greedy.
+- `+` matches one or more occurrences of the character that comes before it
+- `?` either zero or one occurrence of the character before it
+- Escape character :
+- `\.` matches dot in the string
+- When we see a pattern that includes a backslash, it could be escaping a special regex character or a special string
+  character
+- `\w` matches any alphanumeric character including numbers, letters, and underscores
+- `\d` for matching digits
+- `\s` for matching white space characters like space, tab or new line
+- `\b` for word boundaries and few others
+- Regular Expressions in Action, Examples:
+    - `r”\d{3}-\d{3}-\d{4}”` :matches U.S. phone numbers in the format 111-222-3333
+    - `r”^-?\d*(\.\d+)?$”`  :matches any positive or negative number, with or without decimal places
+    - `r”^/(.+)/([^/]+)/$”` :is often used to extract specific parts of URLs or file paths, such as the directory names
+      or filenames
+
+### Advanced Regular Expressions
+
+- Capturing Groups : are portions of the pattern that are enclosed in parentheses
+- result.group() method returns a tuple, can access elements by indexing
+- first(0) index being the whole string followed by each element in the group
+- More on Repetition qualifiers
+- Extracting a PID using regexes in Python
+- Splitting and Replacing
+
+## MODULE 4
+
+### Data Streams
+- Standard streams : IO streams (input-output)
+    - STDIN :
+        - input('...') for python3 and raw_input('...') for python 2
+        - raw_input will just get a string from a user, 
+        - on the other hand input will actually perform basic maths on calling eval()
+        - eval() is used to evaluate string expressions
+    - STDOUT
+    - STDERR
+- Environment variables :
+    - variables set in environment(shell command-line environment)
+    - source of information saved in environment to use in the scripts
+- Shell : a command-line interface used to interact with your operating system
+    - bash (commonly used shell)
+    - zsh
+    - fish
+- Check environmental variables from command-line prompt
+    - env : returns all the environmental variables in the system
+    - echo $PATH : returns all the paths stored
+        - echo is a command to print text in linux
+        - $ is prefixed to name of the variable to access its value
+- Command-line arguments:
+    - parameters passed to a program when it's started
+    - these are useful for system administration tasks
+    - cmd-line arguments are stored in sys module
+    - each parameter is saved as separate element in a list
+- Exit status / Return code:
+    - value returned by a program to the shell in unix like OS
+    - 0 : when process succeeds
+    - echo $? : return the exit status
+    - wc <filename> : returns lines, word & characters in the file
+
+### Python Subprocesses
+- Running system commands in Python
+  - subprocess : run a system program from python script using functions provided
+    - runt() : receives list of commands followed by other parameters
+- Obtaining the output of a system command
+- Advanced subprocess management 
+  - 
