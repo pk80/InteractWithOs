@@ -317,10 +317,11 @@ print(re.search(r"p?each", "I like peaches"))
 ## MODULE 4
 
 ### Data Streams
+
 - Standard streams : IO streams (input-output)
     - STDIN :
         - input('...') for python3 and raw_input('...') for python 2
-        - raw_input will just get a string from a user, 
+        - raw_input will just get a string from a user,
         - on the other hand input will actually perform basic maths on calling eval()
         - eval() is used to evaluate string expressions
     - STDOUT
@@ -349,9 +350,90 @@ print(re.search(r"p?each", "I like peaches"))
     - wc <filename> : returns lines, word & characters in the file
 
 ### Python Subprocesses
+
+- Subprocesses are a way to call and run other applications from within Python, including other Python scripts
 - Running system commands in Python
-  - subprocess : run a system program from python script using functions provided
-    - runt() : receives list of commands followed by other parameters
+    - subprocess : run a system program from python script using functions provided
+        - runt() : receives list of commands followed by other parameters
 - Obtaining the output of a system command
-- Advanced subprocess management 
-  - 
+- Advanced subprocess management
+    - os.environ.copy() : copy env vars in dictionary to store and prepare for new environment
+    - os.pathsep.join() : joins two elements of the path with respect to underliyin OS
+    - cwd : current working directory
+    - evn : environment variable
+- If we're automating a one-off, well-defined task, we're developing a solution quickly is the biggest requirement,
+  then using system commands and subprocesses can help a lot. But if we're doing something more complex or long-running,
+  it's usually a good idea to use the baked-in or external modules that Python provides
+- So before deciding to use a sub-process, it's a good idea to check the standard library or pypi repository to see if
+  we can do the task with native Python and to check if someone has already created the automation that we wanted to
+  write
+- Subprocess is best used when you need to
+    - interface with external processes,
+    - run complex shell commands, or
+    - need precise control over input and output.
+- Subprocess also spawns fewer processes per task than OS, so subprocess can use less compute power
+- Subprocess can run any shell command, providing greater flexibility
+- Subprocess can capture stdout and stderr easily
+
+vs OS
+
+- On the other hand, OS is useful for basic file and directory operations, environment variable management, and when you
+  don't need the object-oriented approach provided by Pathlib.
+- OS provides a simple way to interface with the operating system for basic operations
+- OS is part of the standard library, so it's widely available.
+
+vs Pathlib
+
+- Pathlib is most helpful for working extensively with file paths, when you want an object-oriented and intuitive way to
+  handle file system tasks, or when you're working on code where readability and maintainability are crucial.
+- Pathlib provides an object-oriented approach to handle file system paths.
+- Compared to OS, Pathlib is more intuitive for file and directory operations.
+- Pathlib is more readable for path manipulations
+
+- run() :
+    - simplest way to run a command
+    - recommended approach to invoking subprocesses
+    - It runs the command, waits for it to complete, then returns a CompletedProcess instance that contains information
+      about the process
+- Popen() : most fully featured way to call external commands
+    - lot more powerful when spawning parallel processes or communicating between subprocesses,
+    - all 4 others are wrappers around this class
+    - very useful when you need asynchronous behavior and the ability to pipe information between a subprocess and the
+      Python program that ran that subprocess.
+- call()
+- check_call() :
+    - similar to call()
+    - receive just the status of a command
+    - raises a CalledProcessError exception if the command returns a non-zero exit code
+- check_output() : receive the status of a command and also obtain output
+
+### Processing Log Files
+
+- Log files :
+    - kind of data you can find in Syslog file or a web request log
+    - Log files contain a lot of useful information, particularly when you're trying to debug a tricky problem that's
+      happening on a computer
+    - Using regex's in our scripts gives us a great deal of flexibility when processing log files and other text data
+      sources too
+- Filtering log files with regex :
+    - regex expressions
+- Making sense out of the data :
+    - dictionaries are great structures to store data
+
+### Qwiklab Assignment:
+
+Imagine one of your colleagues is struggling with a program that **keeps throwing an error**. Unfortunately, the program's
+source code is too complicated to easily find the error there. The good news is that the program outputs a **log file** you
+can read! Let's write a script to **search the log file for the exact error**, then **output that error into a separate file**
+so you can work out what's wrong.  
+**What you'll do** 
+1. Write a script to search the log file using regex to find for the exact error.
+2. Report the error into a separate file so you know what's wrong for further analysis.
+
+## MODULE 5
+
+### Simple Tests
+### Unit Tests
+### Other Test Concepts
+### Errors and Exceptions
+### Qwiklab Assignment
