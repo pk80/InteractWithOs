@@ -1,5 +1,55 @@
 # Interaction with Operating System with Python
 
+<!-- TOC -->
+
+* [Interaction with Operating System with Python](#interaction-with-operating-system-with-python)
+    * [Interpreted Language vs Compiled Language](#interpreted-language-vs-compiled-language)
+    * [Running a Python Script](#running-a-python-script)
+    * [Code reusability](#code-reusability)
+    * [Code Editors or IDEs](#code-editors-or-ides)
+    * [Python Specific Editors](#python-specific-editors)
+    * [Create, activate and deactivate virtual environments for Python](#create-activate-and-deactivate-virtual-environments-for-python)
+    * [Generate Requirements file list](#generate-requirements-file-list)
+    * [Install Requirements file](#install-requirements-file)
+    * [MODULE 2](#module-2)
+        * [Reading and Writing files](#reading-and-writing-files)
+            * [Programming with files](#programming-with-files)
+            * [Reading files](#reading-files)
+            * [Iterating through files](#iterating-through-files)
+            * [Writing files](#writing-files)
+            * [Reading and Writing files](#reading-and-writing-files-1)
+        * [File paths](#file-paths)
+        * [Managing files and directories](#managing-files-and-directories)
+        * [Reading and writing csv files](#reading-and-writing-csv-files)
+            * [Reading and writing CSV files with dictionaries](#reading-and-writing-csv-files-with-dictionaries)
+    * [MODULE 3](#module-3)
+        * [Regular Expressions](#regular-expressions)
+        * [Basic Regular Expressions](#basic-regular-expressions)
+            * [Simple matching](#simple-matching)
+            * [Wildcards and Character classes](#wildcards-and-character-classes)
+        * [Advanced Regular Expressions](#advanced-regular-expressions)
+    * [MODULE 4](#module-4)
+        * [Data Streams](#data-streams)
+        * [Python Subprocesses](#python-subprocesses)
+        * [Processing Log Files](#processing-log-files)
+        * [Qwiklab Assignment:](#qwiklab-assignment)
+    * [MODULE 5](#module-5)
+        * [Simple Tests](#simple-tests)
+        * [Unit Tests](#unit-tests)
+        * [Pytest](#pytest)
+            * [Key difference between unittest and pytest](#key-difference-between-unittest-and-pytest)
+            * [Edge Case](#edge-case)
+            * [Assertions](#assertions)
+            * [Test Suites](#test-suites)
+        * [Other Test Concepts](#other-test-concepts)
+            * [More about tests](#more-about-tests)
+        * [Errors and Exceptions](#errors-and-exceptions)
+            * [Terms and definitions from course 2, module 5](#terms-and-definitions-from-course-2-module-5)
+        * [Qwiklab Assignment](#qwiklab-assignment-1)
+    * [MODULE 6](#module-6)
+
+<!-- TOC -->
+
 ## Interpreted Language vs Compiled Language
 
 Examples of Compiled programming languages : C, C++, Go, Rust
@@ -58,7 +108,7 @@ pip freeze > requirements.txt
 pip install -r requirements.txt
 ```
 
-## Module 2:
+## MODULE 2
 
 ### Reading and Writing files
 
@@ -248,7 +298,6 @@ outputs['current_directory'] = os.getcwd()
 - re.IGNORECASE option in search parameters ignores the case sensitivity
 
 #### Wildcards and Character classes
-- 
 
 ```
 # Wildcards and Character classes
@@ -422,18 +471,467 @@ vs Pathlib
 
 ### Qwiklab Assignment:
 
-Imagine one of your colleagues is struggling with a program that **keeps throwing an error**. Unfortunately, the program's
-source code is too complicated to easily find the error there. The good news is that the program outputs a **log file** you
-can read! Let's write a script to **search the log file for the exact error**, then **output that error into a separate file**
+Imagine one of your colleagues is struggling with a program that **keeps throwing an error**. Unfortunately, the
+program's
+source code is too complicated to easily find the error there. The good news is that the program outputs a **log file**
+you
+can read! Let's write a script to **search the log file for the exact error**, then **output that error into a separate
+file**
 so you can work out what's wrong.  
-**What you'll do** 
+**What you'll do**
+
 1. Write a script to search the log file using regex to find for the exact error.
 2. Report the error into a separate file so you know what's wrong for further analysis.
 
 ## MODULE 5
 
 ### Simple Tests
+
+- Software Testing : a process of evaluating computer code to determine whether it does what you expect it to do
+- Scripts and programs can fail in all sorts of strange ways, especially as it becomes more complicated
+- Writing tests can help you eliminate a bunch of bugs, helping to improve the reliability and the quality of automation
+- Tests can help make good code great
+- Fundamentals:
+    - Manual testing
+        - The most basic way of testing a script is to run it with different parameters and see if it returns the
+          expected values
+        - Using the interpreter to try our code before putting it in a script is another form of manual testing.
+        - Ex: Executing a script with different command-line arguments to see how its behavior changed
+    - Automated testing
+        - Codifying tests into its own software and code that can be run to verify that our programs do what we expect
+          them to do. This is called automatic testing
+        - The goal of automatic testing is to automate the process of checking if the returned value matches the
+          expectations
+        - Test cases :
+            - You ought to verify that test code behaves the way you expect it to have as many possible values known as
+              test cases
+        - The more test cases that you include in your test, the better tested your code is and the more you can
+          guarantee that your code does what you expect it to do
+        - Advantages :
+            - we can run them as many times as necessary and will always get the same results
+        - Types of automatic test:
+            - Unit testing
+    - Unit Tests
+        - These tests can be run on individual components or by isolating units of code to ensure their correctness
+        - Can help in identifying and fix any bugs that appear, creating a more reliable code
+        - Concepts relied on :
+            - Test fixture :
+                - preparation to perform one or more tests
+                - involve creating temporary or proxy databases, directories, or starting a server process
+            - Test case :
+                - individual unit of testing that looks for a specific response to a set of inputs
+                - TestCase is a base class provided by unittest and can be used to create new test cases
+            - Test suite :
+                - a collection of test cases, test suites, or a combination of both
+                - used to compile tests that should be executed together
+            - Test runner :
+                - runs the test and provides developers with the outcome’s data
+                - use different interfaces, like graphical or textual, to provide the developer with the test results
+                - provide a special value to developers to communicate the test results
+        - Unit test is a class based
+    - Integration Test
+    - Test-driven development
+- Having good tests for our software can help us catch mistakes, errors, and bugs before we deploy our scripts to
+  perform real-world automation tasks
+
 ### Unit Tests
+
+- Used to verify that small, isolated parts of a program are correct
+- An unittest provides developers with a set of tools to construct and run tests
+- These tests can be run on individual components or by isolating units of code to ensure their correctness
+
+### Pytest
+
+- Pytest is a powerful Python testing tool that assists programmers in writing more effective and stable programs
+- It helps to simplify the process of writing, organizing and executing tests
+- It can be used to write a variety of tests including:
+    - integration,
+    - end-to-end, and
+    - functional tests
+- It supports automatic test discovery and generates informative test reports
+- Pytests are written with functions that use the operation, assert()
+- An assert is a commonly used debugging tool in Python that allows programmers to include sanity checks in their code
+- If the condition provided to assert() turns out to be false, it indicates a bug in the code, an exception is raised,
+  and halts the program’s execution
+
+```python
+def divide(a, b):
+    assert b != 0, 'cannot divide by zero'
+    return a / b
+
+
+divide(2, 0)
+```
+
+- An AssertionError message is raised informing the programmer that it is not possible to divide a value by zero
+
+**Pytest fixtures**
+
+- Fixtures are used to separate parts of code that only run for tests
+
+#### Key difference between unittest and pytest
+
+- Both unittest and pytest provide developers with tools to create robust and reliable code through different forms of
+  tests
+- Unittest is a tool that is built directly into Python, while pytest must be imported from outside your script.
+- Unittest has the functionality to automatically detect test cases within an application, but it must be called from
+  the command line. Pytests are performed automatically using the prefix test_
+- Unittests use an object-oriented approach to write tests, while pytests use a functional approach
+- Pytests use built-in assert statements, making tests easier to read and write. On the other hand, unittests provide
+  special assert methods like assertEqual() or assertTrue()
+
+#### Edge Case
+
+- Edge cases are inputs to our code that produce unexpected results, and are found at the extreme ends of the ranges of
+  input we imagine our programs will typically work with
+- Edge cases usually need special handling in scripts in order for the code to continue to behave correctly
+- We can handle this edge case by performing a simple check of the result variable before operating with it
+
+#### Assertions
+
+* assertEqual(a, b) : method checks that a == b
+* assertNotEqual(a, b) : method checks that a != b
+* assertTrue(x) : method checks that bool(x) is True
+* assertFalse(x) : method checks that bool(x) is False
+* assertIs(a, b) : method checks that a is b
+* assertIsNot(a, b) : method checks that a is not b
+* assertIsNone(x) : method checks that x is None
+* assertIsNotNone(x) : method checks that x is not None
+* assertIn(a, b) : method checks that a in b
+* assertNotIn(a, b) : method checks that a not in b
+* assertIsInstance(a, b) : method checks that isinstance(a, b)
+* assertNotIsInstance(a, b) : method checks that not isinstance(a, b)
+* assertRaises : test whether exceptions are raised
+
+#### Test Suites
+
+- Test suites are collections of tests that should be executed together
+- Optimization the testing process
+    - setUp() :
+        - called automatically with every test that’s run to set up code
+        - if raises an exception during the test, the unittest framework considers this to be an error and the test
+          method is not executed
+        - if successful, tearDown() runs even if the test method fails
+    - tearDown() :
+        - helps clean up after the test has been run
+- Taking together a group of tests of one or many kinds is commonly referred to as a test suite.
+
 ### Other Test Concepts
+
+- White-box test (clear-box or transparent testing)
+    - relies on the test creator's knowledge of the software being tested to construct the test cases
+    - helpful because a test writer can use their knowledge of the source code to create tests that cover most of the
+      ways that the program behaves
+    - If unit tests are run alongside or after the code has been developed, the test cases are made with a knowledge of
+      how software works. They are white-box tests
+- Black-box test
+    - written with an awareness of what the program is supposed to do, its requirements or specifications, but not how
+      it does it
+    - the software being tested is treated like an opaque box, meaning tester doesn't know the internals of how the
+      software works
+    - useful because they don't rely on the knowledge of how the system works
+    - If the unit tests are created before any code is written based on specifications of what the code is supposed to
+      do, they can be considered black-box unit test
+- Other test types
+    - Integration test
+        - verify that the interactions between the different pieces of code in integrated environments are working the
+          way we expect them to
+        - goal of an integration test is to verify these kinds(boundaries) of interactions and make sure the whole
+          system works how you expect it to
+        - usually take the individual modules of code that unit tests verify then combine them into a group to test
+    - Regression test
+        - a variant of unit test
+        - usually written as part of a debugging and troubleshooting process to verify that an issue or error has been
+          fixed once it's been identified
+        - useful part of a test suite because they ensure that the same mistake doesn't happen twice
+    - Smoke test (build verification tests)
+        - a concept that comes from testing hardware equipment.
+        - serve as a kind of sanity check to find major bugs in a program
+        - usually run before more refined testing takes place
+        - For a web service the smoke test would be to check if there's a service running on the corresponding port
+        - For an automation script, the smoke test would be to run it manually with some basic input and check that the
+          script finishes successfully
+        - Running a piece of software code as-is to see if it runs describes what type of testing
+    - Load test
+        - verify that the system behaves well when it's under significant load
+        - To actually perform these tests will need to generate traffic to our application simulating typical usage of
+          the service
+        - can be super-helpful when deploying new versions of our applications to verify that performance does not
+          degrade
+    - Test Driven Development
+        - TDD calls for creating the test before writing the code.
+        - TDD cycle typically involves first writing a test then running it to make sure it fails
+
+#### More about tests
+
+Check out the following links for more information:
+
+* https://landing.google.com/sre/sre-book/chapters/monitoring-distributed-systems/
+* https://landing.google.com/sre/sre-book/chapters/testing-reliability/
+* https://testing.googleblog.com/2007/10/performance-testing.html
+* https://www.guru99.com/smoke-testing.html
+* https://www.guru99.com/exploratory-testing.html
+* https://testing.googleblog.com/2008/09/test-first-is-fun_08.html
+
 ### Errors and Exceptions
+
+- Types of errors
+    - TypeError
+    - ValueError
+    - IndexError
+    - OSError
+    - etc...
+- An exception is not meant to produce an error, but to bypass it
+- The Try-Except concept
+    - Code in the except block is only executed if one of the instructions in the try block raises an error of the
+      matching
+      type
+- Raising Errors
+- Testing for expected errors
+- Handling errors
+    - There are several potential issues here:
+        - The file might not exist, causing a **FileNotFoundError**.
+        - The file might not have enough lines of data, leading to an **IndexError**.
+        - The data in the file might not be convertible to integers, raising a **ValueError**.
+        - The second number might be zero, which would raise a **ZeroDivisionError**.
+    - The errors should read
+        - file level issues
+        - value error like not enough data in the file
+        - error like the file was not found
+        - data level issues
+        - value error like invalid literal for int() with base 10:'apple'
+        - division error like the denominator is zero
+
+#### Terms and definitions from course 2, module 5
+
+- **Automatic testing**: A process where software checks itself for errors and confirms that it works correctly
+- **Black-box tests**: A test where there is an awareness of what the program is supposed to do but not how it does it
+- **Edge case**s: Inputs to code that produce unexpected results, found at the extreme ends of the ranges of input
+- **Pytest**: A powerful Python testing tool that assists programmers in writing more effective and stable programs
+- **Software testing**: A process of evaluating computer code to determine whether or not it does what is expected
+- **Test case**: This is the individual unit of testing that looks for a specific response to a set of inputs
+- **Test fixture**: This prepared to perform one or more tests
+- **Test suite**: This is used to compile tests that should be executed together
+- **Test runner**: This runs the test and provides developers with the outcome’s data
+- **unittest**: A set of Python tools to construct and run unit tests
+- **Unit tests**: A test to verify that small isolated parts of a program work correctly
+- **White-box test**: A test where test creator knows how the code works and can write test cases that use the
+  understanding to make sure it performs as expected
+
 ### Qwiklab Assignment
+
+Imagine one of your IT coworkers just retired and left a folder of scripts for you to use. One of the scripts, called
+emails.py, matches users to an email address and lets us easily look them up! For the most part, the script works
+great — you enter an employee's name and their email is printed to the screen. But, for some employees, the output
+doesn't look quite right. Your job is to add a test to reproduce the bug, make the necessary corrections, and verify
+that all the tests pass to make sure the script works! Best of luck!
+
+What you'll do
+
+- Write a simple test to check for basic functionality
+- Write a test to check for edge cases
+- Correct code with a try/except statement
+
+## MODULE 6
+
+- Input/Output streams to files or even to other programs
+- Bash is a programming language
+- Bash commands are more readable and a lot easier to maintain
+
+### Interacting with command-line shell
+
+- Basic Linux Commands
+
+```shell
+    echo 'Hello World!'
+    mkdir mynewdir
+    cd mynewdir/
+    /mynewdir$ pwd
+    /mynewdir$ cp ../spider.txt .
+    /mynewdir$ touch myfile.txt
+    /mynewdir$ ls -l
+    /mynewdir$ ls -la
+    /mynewdir$ mv myfile.txt emptyfile.txt
+    /mynewdir$ cp spider.txt yetanotherfile.txt
+    /mynewdir$ ls -l
+    /mynewdir$ rm *
+    /mynewdir$ ls -l
+    /mynewdir$ cd ..
+    rmdir mynewdir/
+    ls mynewdir
+    
+    # Managing files and directories:
+    mv file1.txt file2.txt file3.txt dir1/ # This command moves multiple files
+    cp file1.txt file2.txt file3.txt dir1/ # This command copies multiple files
+    # chmod/chown/chgrp is used to make a file readable to everyone on the system before moving it to a public director
+    chmod +r file.html && mv file.html /var/www/html/index.html 
+    # cut is a command that extracts fields from a data file
+    cut -f1 -d”,” addressbook.csv # This command extracts the first field from a .csv file
+    cut -c1-3,5-7,9-12 phones.txt # This command extracts only the digits from a list of phone numbers
+    # sort is a command that sorts the contents of a file. Some examples include:
+    sort names.txt # This command sorts inputs alphabetically
+    sort -r names.txt # This command sorts inputs in reverse alphabetical order, starting with the letter z 
+    sort -n numbers.txt # This command treats the inputs as numbers and then sorts them numerically
+    ls -l | cut -w -f5,9 | sort -rn | head -10 # This command displays the 10 largest files in the current directory
+    cut -f1-2 -d”,” addressbook.csv | sort # This command extracts the first and last names from a .csv file and sorts them
+    
+    # Additional commands:
+    id # command that prints information about the current user
+    free # is a command that prints information about memory on the current system
+    #free -h: Display memory sizes in human-readable format.
+    #free -s [delay]: Repeat the command with a specified delay between updates.
+    #free -b: Display memory sizes in bytes.
+    #free -k: Display memory sizes in kilobytes.
+    #free -m: Display memory sizes in megabytes.
+    #free -g: Display memory sizes in gigabytes.
+```
+
+- Redirecting streams
+    - redirection is a process sending a stream to a different destination
+    - each time we perform of redirection of STD out, the destination is overwritten
+    - If we want to append the redirected standard out to a file we can use the double greater than sign instead of
+      single greater than
+    - redirect standard input sending data into a program by using the less than symbol to read the contents of a file
+
+```shell
+    cat stdout_example.py
+    ./stdout_example.py 
+    ./stdout_example.py > new_file.txt
+    cat new_file.txt 
+    ./stdout_example.py >> new_file.txt
+    cat new_file.txt
+    cat streams_err.py 
+    ./streams_err.py < new_file.txt
+    ./streams_err.py < new_file.txt 2> error_file.txt
+    cat error_file.txt
+    echo "These are the contents of the file" > myamazingfile.txt
+    cat myamazingfile.txt
+    #command > file: redirects standard output, overwrites file
+    #command >> file: redirects standard output, appends to file
+    #command < file: redirects standard input from file
+    #command 2> file: redirects standard error to file
+```
+
+- Pipes and pipelines
+    - Another powerful way of performing IO stream redirection called Piping
+    - Using pipes, you can connect multiple scripts, commands, or other programs together into a data processing
+      pipeline
+    - Pipes connect the output of one program to the input of another in order to pass the data between programs
+    - Pipes are represented by the pipe character
+    - Allows us to create new commands by combining the functionality of one command, with the functionality of another
+      without having to store the contents in an intermediate file
+    - You can use your Python scripts and pipelines too
+
+```shell
+    ls -l | less
+    cat spider.txt | tr ' ' '\n' | sort | uniq -c | sort -nr | head 
+    # tr - translate/transform ' ' to '\n'
+    # sort - sorts the then results alphabetically, -nr flag, sorts numerically and in reverse order
+    # uniq - which displays each match once and by using a -c flag, it prefixes each unique line with a number of times it occurred
+    # head - prints first 10 lines to stdl
+    cat capitalize.py
+    cat haiku.txt
+    cat haiku.txt | ./capitalize.py
+    ./capitalize.py < haiku.txt
+    #command1 | command2: connects the output of command1 to the input of command2
+```
+
+- Signaling processes
+    - Signals are tokens delivered to running processes to indicate a desired action
+    - Using signals, we can
+        - tell a program that we want it to pause or terminate,
+        - to reload its configuration, or
+        - to close all open files.
+    - Since Kill is a separate program, we need to run it on a separate terminal, and we also need to know the process
+      identifier or PID of the process
+    - Depending on what options that we pass, `ps` command will show different subsets of processes with different
+      amounts of detail
+        - with `ax` : lists all the running process in the current computer
+
+```shell
+    ping www.google.com
+    Ctrl-c # sends SIGINT signal # process does whatever it needs to finish cleanly
+    Ctrl-Z # sends SIGSTOP signal # causes the program to stop running without actually terminating
+    fg # process stopped by SIGSTOP can be run again by this command
+    kill # sends SIGTERM signal # terminates the program
+    ps # list the currently running processes
+```
+
+```shell
+    # run ping on one terminal
+    ping www.google.com
+    PING www.google.com (142.251.42.100): 56 data bytes
+    64 bytes from 142.251.42.100: icmp_seq=0 ttl=53 time=33.239 ms
+    64 bytes from 142.251.42.100: icmp_seq=1 ttl=53 time=34.095 ms
+    64 bytes from 142.251.42.100: icmp_seq=2 ttl=53 time=33.931 ms
+    64 bytes from 142.251.42.100: icmp_seq=3 ttl=53 time=34.123 ms
+    ...
+    zsh: terminated  ping www.google.com
+```
+
+```shell
+    # find its PID and kill it in another terminal
+    ps ax | grep ping
+    44655 s001  S+     0:00.01 ping www.google.com
+    44659 s002  R+     0:00.00 grep ping
+    kill 44655
+```
+
+```shell
+    $ ps  # : lists the processes executing in the current terminal for the current user
+    $ ps ax # : lists all processes currently executing for all users  
+    $ ps e  # : shows the environment for the processes listed  
+    $ kill PID  # : sends the SIGTERM signal to the process identified by PID
+    $ fg  # : causes a job that was stopped or in the background to return to the foreground
+    $ bg  # : causes a job that was stopped to go to the background
+    $ jobs  # : lists the jobs currently running or stopped
+    $ top # : shows the processes currently using the most CPU time (press "q" to quit)  
+```
+
+### Bash scripting
+
+- Creating Bash scripts
+- Using Variables and Globs
+    - variables
+        - variable initialization should be like `example=hello world` without space around `=`
+        - to access a variable prefix $ before variable name
+    - globs
+        - globs are characters that allow us to create lists of files
+        - `*` and `?` are the most common globs
+        - globs lets us create sequences of filenames that we can use as parameters to the commands we call in our
+          script
+
+```shell
+    echo *.py # all files with  filenames ending .py
+    echo c* # all files starting with letter `c`
+    echo * # all files 
+    echo ????.py # .py files with 4 characters resembling `?`
+```
+
+- Conditional execution in Bash
+    - In bash scripting, the condition used is based on the exit status of commands
+    - In bash scripting, the exit value of 0 means success
+    - `test` is a command that evaluates the conditions received and exits with zero when they're true and with one when
+      they're false
+    - alias to `test` command is `[ <condition> ]` with spaces at start and end of condition
+- Bash scripting resources
+
+### Advanced Bash concepts
+
+- While loops in Bash scripts
+- For loops in Bash scripts
+- Advanced command interaction
+    - `tail` and `cat` are almost similarly command printing the content of the file
+    -  `tail` prints last lines
+
+```shell
+    tail sample.txt
+    tail sample.txt | cut -d' ' -f5-
+    cut -d' ' -f5- sample.txt | sort | uniq -c | sort -nr | head
+    # -d' ' : delimiter as space 
+    # 
+```
+
+- Choosing between Bash and Python
+
+### Qwiklabs Assignment
