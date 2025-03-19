@@ -922,7 +922,7 @@ What you'll do
 - For loops in Bash scripts
 - Advanced command interaction
     - `tail` and `cat` are almost similarly command printing the content of the file
-    -  `tail` prints last lines
+    - `tail` prints last lines
 
 ```shell
     tail sample.txt
@@ -933,5 +933,116 @@ What you'll do
 ```
 
 - Choosing between Bash and Python
+    - Sometimes bash script is unreadable, that is better done in python script
+    - Good idea to use bash for system commands and file operations than python
+    - Bash is platform dependent
+
+### Glossary
+
+**Terms and definitions from Course 2, Module 6**
+
+* Bash script: A script that contains multiple commands
+* Cut: A command that can split and take only bits of each line using spaces
+* Globs: Characters that create list of files, like the star and question mark
+* Pipes: A process of connecting the output of one program to the input of another
+* Piping: A process of connecting multiple scripts, commands, or other programs together into a data processing pipeline
+* Redirection: A process of sending a stream to a different destination
+* Signals: Tokens delivered to running processes to indicate a desired action
 
 ### Qwiklabs Assignment
+
+In this lab, you'll change the username of your coworker Jane Doe from "jane" to "jdoe" in compliance with company's
+naming policy. The username change has already been done. However, some files that were named with Jane's previous
+username "jane" haven't been updated yet. To help with this, you'll write a bash script and a Python script that will
+take care of the necessary rename operations.
+
+**What you'll do**
+
+1. Practice using the cat, grep, and cut commands for file operations
+2. Use > and >> commands to redirect I/O stream
+3. Replace a substring using Python
+4. Run bash commands in Python
+
+**Prerequisites**
+
+- cat
+- grep : grep [pattern] [file-directory/file-location]
+- cut : cut [options] [file] ; cut -d [delimiter] -f [field number]
+
+**Linux I/O Redirection**
+
+- Redirection into a file using >
+- Append using >>
+
+**Redirection into a file**
+
+- cat > [file]
+- cat >> [file]
+
+### IT skills in action reading
+
+In this reading, you will review an example of how regular expressions are used in the real world.
+
+**Disclaimer**: The following scenario is based on a fictitious company called LogicLink Innovations.
+
+**Time is ticking**
+Dakota is a fairly new programmer with his company. He just earned a spot on the project for LogicLink Innovations. This
+is one of the biggest and most credible companies in the industry, so Dakota knows he has to excel on this project to
+help make a name for himself. LogicLink Innovations manages customer data and has hundreds of customer phone numbers in
+its database. The phone numbers are in inconsistent formats. Some are written with dashes, some in parentheses with
+spaces, and some are just digits. Dakota sees this:
+
+123-456-7890
+(123) 456-7890
+1234567890
+
+Dakota is assigned to take the dataset containing phone numbers and organize the formatting so they are all consistent.
+His manager tells him they need it by the end of the week! There is no way Dakota can work through and edit hundreds of
+phone numbers. There has to be another way.
+
+**Search and replace**
+Dakota remembers reading about how other programmers use regular expressions to make their coding life easier. He knows
+there has to be one that can help him with his dilemma. This can’t be the first time a programmer needs to standardize
+numbers! He decides to craft a regular expression that captures three groups of digits, each of which might be
+surrounded by non-digit characters.
+
+Using a regex tool and the sample data from above, he eventually comes up with a regex that matches all three samples:
+**^\D*(\d{3})\D*(\d{3})\D*(\d{4})$**
+
+Let’s break down this line of code, piece by piece:
+
+* ^\D*    : This part of the code matches zero or more non-digit characters at the beginning of the string.
+* (\d{3}) : This part of the code captures exactly three digits, which represent the area code.
+* \D* : This part of the code matches zero or more non-digit characters between the area code and exchange.
+* (\d{3} )    : This part of the code captures the three-digit exchange.
+* \D* : This part of the code matches zero or more non-digit characters between the exchange and line.
+* (\d{4})$    : This part of the code captures exactly four digits at the end of the string.
+
+Now he has three capture groups: area code, exchange, and number. He then substitutes those groups into a new string
+using backreferences:
+**(\1) \2-\3**
+
+This puts all the phone numbers into a uniform format.
+
+This regular expression helps Dakota by searching for phone numbers in different formats and replacing them to match the
+format that Dakota’s manager needs: (123) 456-7890. Dakota begins to code.
+
+He writes up a simple Python script to read the dataset from a file and output the corrected phone numbers using his
+regular expressions:
+
+```python
+import re
+
+with open("data/phones.csv", "r") as phones:
+    for phone in phones:
+        new_phone = re.sub(r"^\D*(\d{3})\D*(\d{3})\D*(\d{4})$", r"(\1) \2-\3", phone)
+        print(new_phone)
+```
+
+```zsh
+    (123) 456-7890
+    (123) 456-7890
+    (123) 456-7890
+```
+
+Success! Dakota gets the project done in a single day and is now the office hero. 
