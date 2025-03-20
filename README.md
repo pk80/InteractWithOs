@@ -1,53 +1,61 @@
 # Interaction with Operating System with Python
 
 <!-- TOC -->
-
 * [Interaction with Operating System with Python](#interaction-with-operating-system-with-python)
-    * [Interpreted Language vs Compiled Language](#interpreted-language-vs-compiled-language)
-    * [Running a Python Script](#running-a-python-script)
-    * [Code reusability](#code-reusability)
-    * [Code Editors or IDEs](#code-editors-or-ides)
-    * [Python Specific Editors](#python-specific-editors)
-    * [Create, activate and deactivate virtual environments for Python](#create-activate-and-deactivate-virtual-environments-for-python)
-    * [Generate Requirements file list](#generate-requirements-file-list)
-    * [Install Requirements file](#install-requirements-file)
-    * [MODULE 2](#module-2)
-        * [Reading and Writing files](#reading-and-writing-files)
-            * [Programming with files](#programming-with-files)
-            * [Reading files](#reading-files)
-            * [Iterating through files](#iterating-through-files)
-            * [Writing files](#writing-files)
-            * [Reading and Writing files](#reading-and-writing-files-1)
-        * [File paths](#file-paths)
-        * [Managing files and directories](#managing-files-and-directories)
-        * [Reading and writing csv files](#reading-and-writing-csv-files)
-            * [Reading and writing CSV files with dictionaries](#reading-and-writing-csv-files-with-dictionaries)
-    * [MODULE 3](#module-3)
-        * [Regular Expressions](#regular-expressions)
-        * [Basic Regular Expressions](#basic-regular-expressions)
-            * [Simple matching](#simple-matching)
-            * [Wildcards and Character classes](#wildcards-and-character-classes)
-        * [Advanced Regular Expressions](#advanced-regular-expressions)
-    * [MODULE 4](#module-4)
-        * [Data Streams](#data-streams)
-        * [Python Subprocesses](#python-subprocesses)
-        * [Processing Log Files](#processing-log-files)
-        * [Qwiklab Assignment:](#qwiklab-assignment)
-    * [MODULE 5](#module-5)
-        * [Simple Tests](#simple-tests)
-        * [Unit Tests](#unit-tests)
-        * [Pytest](#pytest)
-            * [Key difference between unittest and pytest](#key-difference-between-unittest-and-pytest)
-            * [Edge Case](#edge-case)
-            * [Assertions](#assertions)
-            * [Test Suites](#test-suites)
-        * [Other Test Concepts](#other-test-concepts)
-            * [More about tests](#more-about-tests)
-        * [Errors and Exceptions](#errors-and-exceptions)
-            * [Terms and definitions from course 2, module 5](#terms-and-definitions-from-course-2-module-5)
-        * [Qwiklab Assignment](#qwiklab-assignment-1)
-    * [MODULE 6](#module-6)
-
+  * [Interpreted Language vs Compiled Language](#interpreted-language-vs-compiled-language)
+  * [Running a Python Script](#running-a-python-script)
+  * [Code reusability](#code-reusability)
+  * [Code Editors or IDEs](#code-editors-or-ides)
+  * [Python Specific Editors](#python-specific-editors)
+  * [Create, activate and deactivate virtual environments for Python](#create-activate-and-deactivate-virtual-environments-for-python)
+  * [Generate Requirements file list](#generate-requirements-file-list)
+  * [Install Requirements file](#install-requirements-file)
+  * [MODULE 2](#module-2)
+    * [Reading and Writing files](#reading-and-writing-files)
+      * [Programming with files](#programming-with-files)
+      * [Reading files](#reading-files)
+      * [Iterating through files](#iterating-through-files)
+      * [Writing files](#writing-files)
+      * [Reading and Writing files](#reading-and-writing-files-1)
+    * [File paths](#file-paths)
+    * [Managing files and directories](#managing-files-and-directories)
+    * [Reading and writing csv files](#reading-and-writing-csv-files)
+      * [Reading and writing CSV files with dictionaries](#reading-and-writing-csv-files-with-dictionaries)
+  * [MODULE 3](#module-3)
+    * [Regular Expressions](#regular-expressions)
+    * [Basic Regular Expressions](#basic-regular-expressions)
+      * [Simple matching](#simple-matching)
+      * [Wildcards and Character classes](#wildcards-and-character-classes)
+    * [Advanced Regular Expressions](#advanced-regular-expressions)
+  * [MODULE 4](#module-4)
+    * [Data Streams](#data-streams)
+    * [Python Subprocesses](#python-subprocesses)
+    * [Processing Log Files](#processing-log-files)
+    * [Qwiklab Assignment:](#qwiklab-assignment)
+  * [MODULE 5](#module-5)
+    * [Simple Tests](#simple-tests)
+    * [Unit Tests](#unit-tests)
+    * [Pytest](#pytest)
+      * [Key difference between unittest and pytest](#key-difference-between-unittest-and-pytest)
+      * [Edge Case](#edge-case)
+      * [Assertions](#assertions)
+      * [Test Suites](#test-suites)
+    * [Other Test Concepts](#other-test-concepts)
+      * [More about tests](#more-about-tests)
+    * [Errors and Exceptions](#errors-and-exceptions)
+      * [Terms and definitions from course 2, module 5](#terms-and-definitions-from-course-2-module-5)
+    * [Qwiklab Assignment](#qwiklab-assignment-1)
+  * [MODULE 6](#module-6)
+    * [Interacting with command-line shell](#interacting-with-command-line-shell)
+    * [Bash scripting](#bash-scripting)
+    * [Advanced Bash concepts](#advanced-bash-concepts)
+    * [Glossary](#glossary)
+    * [Qwiklabs Assignment](#qwiklabs-assignment)
+    * [IT skills in action reading](#it-skills-in-action-reading)
+  * [MODULE 7](#module-7)
+    * [Getting ready for the final project](#getting-ready-for-the-final-project)
+    * [Job searching and Professional Networking](#job-searching-and-professional-networking)
+    * [Course warp-up](#course-warp-up)
 <!-- TOC -->
 
 ## Interpreted Language vs Compiled Language
@@ -1045,4 +1053,88 @@ with open("data/phones.csv", "r") as phones:
     (123) 456-7890
 ```
 
-Success! Dakota gets the project done in a single day and is now the office hero. 
+Success! Dakota gets the project done in a single day and is now the office hero.
+
+## MODULE 7
+
+### Getting ready for the final project
+
+- Introduction
+- Writing script from ground up
+    - Steps for coding projects
+        1. Understand the problem statement
+            - what needs to be done
+            - identifying the given inputs and desired outputs
+        2. Research
+            - how to tackle the problem
+            - tools provided by python library
+            - documentation of modules, classes and functions and understanding how to apply
+        3. Planning
+            - what data types are useful
+            - order of operations
+            - how all pieces come together to give our solution
+            - Synergy : If the problem is complex, it might help to write down the plan for quick reference, either on a
+              piece of paper or in a digital document
+        4. Writing script
+            - writing and checking the code
+            - manual testing, automatic testing
+- Project problem statement
+    - Write some automation scripts that will process the system log and generate a bunch of reports based on the
+      information extracted from log files. The log lines follow a pattern similar to the ones we've seen before.
+    - When the service runs correctly, it logs an info message to syslog, stating what it's done, the username, and the
+      ticket number related to the event
+    - If the service encounters a problem, it logs an error message to the syslog, indicating what was wrong and the
+      username that triggered the action that caused the problem
+    - The developers of the service want two different reports out of this data.
+        - The first one is a ranking of errors generated by the system. This means a list of all error messages logged,
+          and how many times each of them was found, not taking into account the users involved. They should be sorted
+          by the most common error to the least common error.
+        - The second one is a usage statistics for the service. This means, a list of all users that have used the
+          system
+          including how many info messages and how many error messages they've generated.
+    - This report should be sorted by username.
+    - To visualize the data in these reports, you want to generate a couple of webpages that'll be served by a web
+      server running on the machine. To do this, you can make use of a script that's already in the system called csv_
+      to_html.py. This script converts the data in a CSV file into an HTML file containing a table with the data
+    - Then, put the files in the directory that's used by the webserver to display the web pages. The goal is to have
+      one script that can get all the necessary work done automatically, every day without any user interaction.
+    - This script doesn't need to do all the work itself. It can call on other scripts to do individual tasks and then
+      put the results together. In fact, we recommend splitting the task so that each piece can be written and tested
+      separately. I imagine that your mind is racing, your pulse might have spread up a little bit, and your palms are
+      sweating all over the keyboard. Don't worry. This might sound like a lot of work. But once you've understood the
+      problem and done some research and planning, everything will start to fall into place
+- Help with Research and Planning
+    - for specific log lines use regex (www.regex101.com) and create a pattern
+    - count how many errors of same type of errors, use dictionaries for this
+    - then sort different criteria
+    - output is the couple of csv files
+    - then call csv_to_html.py file pass parameters to it either by python / bash, recomended bash
+- Qwiklabs assessment
+
+    Imagine your company uses a server that runs a service called ticky, an internal ticketing system. The service logs
+    events to syslog, both when it runs successfully and when it encounters errors.
+
+    The service's developers need your help getting some information from those logs so that they can better understand how
+    their software is used and how to improve it. So, for this lab, you'll write some automation scripts that will process
+    the system log and generate reports based on the information extracted from the log files.
+
+    **What you'll do**
+    - Use regex to parse a log file
+    - Append and modify values in a dictionary
+    - Write to a file in CSV format
+    - Move files to the appropriate directory for use with the CSV->HTML converter
+
+- Log ananlysis using regular expressions
+- Graded Assessment
+
+### Job searching and Professional Networking
+
+- Build a job search plan
+- What is your career identity?
+- Personal Branding
+- Get started with LinkedIn
+- Recruiters, Headhunters and Staffing Agencies
+
+### Course warp-up
+
+- Reflect and connect using peers
