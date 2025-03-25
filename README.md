@@ -1,3 +1,5 @@
+from os import write
+
 # Interaction with Operating System with Python
 
 <!-- TOC -->
@@ -50,7 +52,7 @@
     * [Bash scripting](#bash-scripting)
     * [Advanced Bash concepts](#advanced-bash-concepts)
     * [Glossary](#glossary)
-    * [Qwiklabs Assignment](#qwiklabs-assignment)
+    * [Qwiklab Assignment](#qwiklab-assignment-2)
     * [IT skills in action reading](#it-skills-in-action-reading)
   * [MODULE 7](#module-7)
     * [Getting ready for the final project](#getting-ready-for-the-final-project)
@@ -94,26 +96,26 @@ Examples of Compiled programming languages : C, C++, Go, Rust
 
 ## Create, activate and deactivate virtual environments for Python
 
-```txt
+```text
 python3 -m venv myenv
 # activate on mac/linux
-myenv/bin/activiate 
+myenv/bin/activate 
 # activate on windows
-myenv/Scripts/activiate
+myenv/Scripts/activate
 # deactivate
 deactivate
 ```
 
 ## Generate Requirements file list
 
-```txt
-pip freeze > requirements.txt
+```text
+% pip freeze > requirements.txt
 ```
 
 ## Install Requirements file
 
-```txt
-pip install -r requirements.txt
+```text
+% pip install -r requirements.txt
 ```
 
 ## MODULE 2
@@ -143,7 +145,7 @@ pip install -r requirements.txt
 
 #### Iterating through files
 
-- If the file is small, reading complete file by read or readlines methods are okay
+- If the file is small, reading complete file by `read` or `readlines` methods are okay
 - If the file is large, reading line by line is the best method to follow else it'll lead poor performance
 
 #### Writing files
@@ -170,7 +172,7 @@ pip install -r requirements.txt
 
 #### Reading and Writing files
 
-```python
+```text
 # Lab work
 guests = ["Bob", "Andrea", "Manuel", "Polly", "Khalid"]
 # writing to file
@@ -223,7 +225,7 @@ print(checked_in)
     - Save Information
     - Load Information (applications, env variables)
 
-```python
+```text
 import os
 
 outputs = dict()
@@ -241,7 +243,7 @@ outputs['current_directory'] = os.getcwd()
 - datetime.datetime.fromtimestamp(timestamp) : convert timestamp to readable time
 - os.path.abspath(<file_name>) : get the absolute path of the file
 - os.getcwd() : get current working directory
-- os.mkdir(<dir_lname>) : created new directory
+- os.mkdir(<dir_name>) : created new directory
 - os.chdir(<new_dir>) : changes the directory
 - os.rmdir(<dir_name>) : removes the directory
 - os.listdir(<dir_name>): lists all files and subdirectories
@@ -276,7 +278,7 @@ outputs['current_directory'] = os.getcwd()
 - `grep` is a command line regex tool
 - Search is executed on the line basis but not on individual word
 
-```
+```text
 % grep thon <filename>
 % grep -i thon <filename> # use -i to avoid case-sensitivity
 ```
@@ -287,7 +289,7 @@ outputs['current_directory'] = os.getcwd()
         - ^ sign : caret/circumflex indicates the beginning, it is said to be an anchor character
         - $ sign : dollar indicates the end of the line, it is said to be an anchor character
 
-```
+```text
 % grep l.rts <filename>
 % grep ^fruit <filename>
 % grep cat$ <filename>
@@ -307,7 +309,7 @@ outputs['current_directory'] = os.getcwd()
 
 #### Wildcards and Character classes
 
-```
+```text
 # Wildcards and Character classes
 % print(re.search(r"[Pp]ython", "Python"))
 % print(re.search(r"[a-z]way", "The end of the highway"))
@@ -415,7 +417,7 @@ print(re.search(r"p?each", "I like peaches"))
 - Obtaining the output of a system command
 - Advanced subprocess management
     - os.environ.copy() : copy env vars in dictionary to store and prepare for new environment
-    - os.pathsep.join() : joins two elements of the path with respect to underliyin OS
+    - os.pathsep.join() : joins two elements of the path with respect to underlying OS
     - cwd : current working directory
     - evn : environment variable
 - If we're automating a one-off, well-defined task, we're developing a solution quickly is the biggest requirement,
@@ -480,12 +482,10 @@ vs Pathlib
 ### Qwiklab Assignment:
 
 Imagine one of your colleagues is struggling with a program that **keeps throwing an error**. Unfortunately, the
-program's
-source code is too complicated to easily find the error there. The good news is that the program outputs a **log file**
-you
-can read! Let's write a script to **search the log file for the exact error**, then **output that error into a separate
-file**
-so you can work out what's wrong.  
+program's source code is too complicated to easily find the error there. The good news is that the program outputs a 
+**log file** you can read! Let's write a script to **search the log file for the exact error**, then **output that error
+into a separate file** so you can work out what's wrong.
+
 **What you'll do**
 
 1. Write a script to search the log file using regex to find for the exact error.
@@ -562,7 +562,7 @@ so you can work out what's wrong.
 - If the condition provided to assert() turns out to be false, it indicates a bug in the code, an exception is raised,
   and halts the program’s execution
 
-```python
+```text
 def divide(a, b):
     assert b != 0, 'cannot divide by zero'
     return a / b
@@ -584,7 +584,7 @@ divide(2, 0)
 - Unittest is a tool that is built directly into Python, while pytest must be imported from outside your script.
 - Unittest has the functionality to automatically detect test cases within an application, but it must be called from
   the command line. Pytests are performed automatically using the prefix test_
-- Unittests use an object-oriented approach to write tests, while pytests use a functional approach
+- Unittests use an object-oriented approach to write tests, while Pytests use a functional approach
 - Pytests use built-in assert statements, making tests easier to read and write. On the other hand, unittests provide
   special assert methods like assertEqual() or assertTrue()
 
@@ -601,12 +601,12 @@ divide(2, 0)
 * assertNotEqual(a, b) : method checks that a != b
 * assertTrue(x) : method checks that bool(x) is True
 * assertFalse(x) : method checks that bool(x) is False
-* assertIs(a, b) : method checks that a is b
-* assertIsNot(a, b) : method checks that a is not b
+* assertIs(a, b) : method checks that `a` is `b`
+* assertIsNot(a, b) : method checks that `a` is not `b`
 * assertIsNone(x) : method checks that x is None
 * assertIsNotNone(x) : method checks that x is not None
-* assertIn(a, b) : method checks that a in b
-* assertNotIn(a, b) : method checks that a not in b
+* assertIn(a, b) : method checks that `a` in `b`
+* assertNotIn(a, b) : method checks that `a` not in `b`
 * assertIsInstance(a, b) : method checks that isinstance(a, b)
 * assertNotIsInstance(a, b) : method checks that not isinstance(a, b)
 * assertRaises : test whether exceptions are raised
@@ -716,7 +716,7 @@ Check out the following links for more information:
 - **Black-box tests**: A test where there is an awareness of what the program is supposed to do but not how it does it
 - **Edge case**s: Inputs to code that produce unexpected results, found at the extreme ends of the ranges of input
 - **Pytest**: A powerful Python testing tool that assists programmers in writing more effective and stable programs
-- **Software testing**: A process of evaluating computer code to determine whether or not it does what is expected
+- **Software testing**: A process of evaluating computer code to determine whether it does what is expected
 - **Test case**: This is the individual unit of testing that looks for a specific response to a set of inputs
 - **Test fixture**: This prepared to perform one or more tests
 - **Test suite**: This is used to compile tests that should be executed together
@@ -750,48 +750,48 @@ What you'll do
 
 - Basic Linux Commands
 
-```shell
-    echo 'Hello World!'
-    mkdir mynewdir
-    cd mynewdir/
-    /mynewdir$ pwd
-    /mynewdir$ cp ../spider.txt .
-    /mynewdir$ touch myfile.txt
-    /mynewdir$ ls -l
-    /mynewdir$ ls -la
-    /mynewdir$ mv myfile.txt emptyfile.txt
-    /mynewdir$ cp spider.txt yetanotherfile.txt
-    /mynewdir$ ls -l
-    /mynewdir$ rm *
-    /mynewdir$ ls -l
-    /mynewdir$ cd ..
-    rmdir mynewdir/
-    ls mynewdir
-    
-    # Managing files and directories:
-    mv file1.txt file2.txt file3.txt dir1/ # This command moves multiple files
-    cp file1.txt file2.txt file3.txt dir1/ # This command copies multiple files
-    # chmod/chown/chgrp is used to make a file readable to everyone on the system before moving it to a public director
-    chmod +r file.html && mv file.html /var/www/html/index.html 
-    # cut is a command that extracts fields from a data file
-    cut -f1 -d”,” addressbook.csv # This command extracts the first field from a .csv file
-    cut -c1-3,5-7,9-12 phones.txt # This command extracts only the digits from a list of phone numbers
-    # sort is a command that sorts the contents of a file. Some examples include:
-    sort names.txt # This command sorts inputs alphabetically
-    sort -r names.txt # This command sorts inputs in reverse alphabetical order, starting with the letter z 
-    sort -n numbers.txt # This command treats the inputs as numbers and then sorts them numerically
-    ls -l | cut -w -f5,9 | sort -rn | head -10 # This command displays the 10 largest files in the current directory
-    cut -f1-2 -d”,” addressbook.csv | sort # This command extracts the first and last names from a .csv file and sorts them
-    
-    # Additional commands:
-    id # command that prints information about the current user
-    free # is a command that prints information about memory on the current system
-    #free -h: Display memory sizes in human-readable format.
-    #free -s [delay]: Repeat the command with a specified delay between updates.
-    #free -b: Display memory sizes in bytes.
-    #free -k: Display memory sizes in kilobytes.
-    #free -m: Display memory sizes in megabytes.
-    #free -g: Display memory sizes in gigabytes.
+```text
+echo 'Hello World!'
+mkdir my_new_dir
+cd my_new_dir/
+/my_new_dir$ pwd
+/my_new_dir$ cp ../spider.txt .
+/my_new_dir$ touch my_file.txt
+/my_new_dir$ ls -l
+/my_new_dir$ ls -la
+/my_new_dir$ mv my_file.txt emptyfile.txt
+/my_new_dir$ cp spider.txt yet_another_file.txt
+/my_new_dir$ ls -l
+/my_new_dir$ rm *
+/my_new_dir$ ls -l
+/my_new_dir$ cd ..
+rmdir my_new_dir/
+ls my_new_dir
+
+# Managing files and directories:
+mv file1.txt file2.txt file3.txt dir1/ # This command moves multiple files
+cp file1.txt file2.txt file3.txt dir1/ # This command copies multiple files
+# chmod/chown/chgrp is used to make a file readable to everyone on the system before moving it to a public director
+chmod +r file.html && mv file.html /var/www/html/index.html 
+# cut is a command that extracts fields from a data file
+cut -f1 -d”,” addressbook.csv # This command extracts the first field from a .csv file
+cut -c1-3,5-7,9-12 phones.txt # This command extracts only the digits from a list of phone numbers
+# sort is a command that sorts the contents of a file. Some examples include:
+sort names.txt # This command sorts inputs alphabetically
+sort -r names.txt # This command sorts inputs in reverse alphabetical order, starting with the letter z 
+sort -n numbers.txt # This command treats the inputs as numbers and then sorts them numerically
+ls -l | cut -w -f5,9 | sort -rn | head -10 # This command displays the 10 largest files in the current directory
+cut -f1-2 -d”,” addressbook.csv | sort # This command extracts the first and last names from a .csv file and sorts them
+
+# Additional commands:
+id # command that prints information about the current user
+free # is a command that prints information about memory on the current system
+#free -h: Display memory sizes in human-readable format.
+#free -s [delay]: Repeat the command with a specified delay between updates.
+#free -b: Display memory sizes in bytes.
+#free -k: Display memory sizes in kilobytes.
+#free -m: Display memory sizes in megabytes.
+#free -g: Display memory sizes in gigabytes.
 ```
 
 - Redirecting streams
@@ -801,23 +801,23 @@ What you'll do
       single greater than
     - redirect standard input sending data into a program by using the less than symbol to read the contents of a file
 
-```shell
-    cat stdout_example.py
-    ./stdout_example.py 
-    ./stdout_example.py > new_file.txt
-    cat new_file.txt 
-    ./stdout_example.py >> new_file.txt
-    cat new_file.txt
-    cat streams_err.py 
-    ./streams_err.py < new_file.txt
-    ./streams_err.py < new_file.txt 2> error_file.txt
-    cat error_file.txt
-    echo "These are the contents of the file" > myamazingfile.txt
-    cat myamazingfile.txt
-    #command > file: redirects standard output, overwrites file
-    #command >> file: redirects standard output, appends to file
-    #command < file: redirects standard input from file
-    #command 2> file: redirects standard error to file
+```text
+cat stdout_example.py
+./stdout_example.py 
+./stdout_example.py > new_file.txt
+cat new_file.txt 
+./stdout_example.py >> new_file.txt
+cat new_file.txt
+cat streams_err.py 
+./streams_err.py < new_file.txt
+./streams_err.py < new_file.txt 2> error_file.txt
+cat error_file.txt
+echo "These are the contents of the file" > my_amazing_file.txt
+cat my_amazing_file.txt
+#command > file: redirects standard output, overwrites file
+#command >> file: redirects standard output, appends to file
+#command < file: redirects standard input from file
+#command 2> file: redirects standard error to file
 ```
 
 - Pipes and pipelines
@@ -830,18 +830,18 @@ What you'll do
       without having to store the contents in an intermediate file
     - You can use your Python scripts and pipelines too
 
-```shell
-    ls -l | less
-    cat spider.txt | tr ' ' '\n' | sort | uniq -c | sort -nr | head 
-    # tr - translate/transform ' ' to '\n'
-    # sort - sorts the then results alphabetically, -nr flag, sorts numerically and in reverse order
-    # uniq - which displays each match once and by using a -c flag, it prefixes each unique line with a number of times it occurred
-    # head - prints first 10 lines to stdl
-    cat capitalize.py
-    cat haiku.txt
-    cat haiku.txt | ./capitalize.py
-    ./capitalize.py < haiku.txt
-    #command1 | command2: connects the output of command1 to the input of command2
+```text
+ls -l | less
+cat spider.txt | tr ' ' '\n' | sort | uniq -c | sort -nr | head 
+# tr - translate/transform ' ' to '\n'
+# sort - sorts the then results alphabetically, -nr flag, sorts numerically and in reverse order
+# uniq - which displays each match once and by using a -c flag, it prefixes each unique line with a number of times it occurred
+# head - prints first 10 lines to stdl
+cat capitalize.py
+cat haiku.txt
+cat haiku.txt | ./capitalize.py
+./capitalize.py < haiku.txt
+#command1 | command2: connects the output of command1 to the input of command2
 ```
 
 - Signaling processes
@@ -856,44 +856,44 @@ What you'll do
       amounts of detail
         - with `ax` : lists all the running process in the current computer
 
-```shell
-    ping www.google.com
-    Ctrl-c # sends SIGINT signal # process does whatever it needs to finish cleanly
-    Ctrl-Z # sends SIGSTOP signal # causes the program to stop running without actually terminating
-    fg # process stopped by SIGSTOP can be run again by this command
-    kill # sends SIGTERM signal # terminates the program
-    ps # list the currently running processes
+```text
+ping www.google.com
+Ctrl-c # sends SIGINT signal # process does whatever it needs to finish cleanly
+Ctrl-Z # sends SIGSTOP signal # causes the program to stop running without actually terminating
+fg # process stopped by SIGSTOP can be run again by this command
+kill # sends SIGTERM signal # terminates the program
+ps # list the currently running processes
 ```
 
-```shell
-    # run ping on one terminal
-    ping www.google.com
-    PING www.google.com (142.251.42.100): 56 data bytes
-    64 bytes from 142.251.42.100: icmp_seq=0 ttl=53 time=33.239 ms
-    64 bytes from 142.251.42.100: icmp_seq=1 ttl=53 time=34.095 ms
-    64 bytes from 142.251.42.100: icmp_seq=2 ttl=53 time=33.931 ms
-    64 bytes from 142.251.42.100: icmp_seq=3 ttl=53 time=34.123 ms
-    ...
-    zsh: terminated  ping www.google.com
+```text
+# run ping on one terminal
+ping www.google.com
+PING www.google.com (142.251.42.100): 56 data bytes
+64 bytes from 142.251.42.100: icmp_seq=0 ttl=53 time=33.239 ms
+64 bytes from 142.251.42.100: icmp_seq=1 ttl=53 time=34.095 ms
+64 bytes from 142.251.42.100: icmp_seq=2 ttl=53 time=33.931 ms
+64 bytes from 142.251.42.100: icmp_seq=3 ttl=53 time=34.123 ms
+...
+zsh: terminated  ping www.google.com
 ```
 
-```shell
-    # find its PID and kill it in another terminal
-    ps ax | grep ping
-    44655 s001  S+     0:00.01 ping www.google.com
-    44659 s002  R+     0:00.00 grep ping
-    kill 44655
+```text
+# find its PID and kill it in another terminal
+ps ax | grep ping
+44655 s001  S+     0:00.01 ping www.google.com
+44659 s002  R+     0:00.00 grep ping
+kill 44655
 ```
 
-```shell
-    $ ps  # : lists the processes executing in the current terminal for the current user
-    $ ps ax # : lists all processes currently executing for all users  
-    $ ps e  # : shows the environment for the processes listed  
-    $ kill PID  # : sends the SIGTERM signal to the process identified by PID
-    $ fg  # : causes a job that was stopped or in the background to return to the foreground
-    $ bg  # : causes a job that was stopped to go to the background
-    $ jobs  # : lists the jobs currently running or stopped
-    $ top # : shows the processes currently using the most CPU time (press "q" to quit)  
+```text
+$ ps  # : lists the processes executing in the current terminal for the current user
+$ ps ax # : lists all processes currently executing for all users  
+$ ps e  # : shows the environment for the processes listed  
+$ kill PID  # : sends the SIGTERM signal to the process identified by PID
+$ fg  # : causes a job that was stopped or in the background to return to the foreground
+$ bg  # : causes a job that was stopped to go to the background
+$ jobs  # : lists the jobs currently running or stopped
+$ top # : shows the processes currently using the most CPU time (press "q" to quit)  
 ```
 
 ### Bash scripting
@@ -909,11 +909,11 @@ What you'll do
         - globs lets us create sequences of filenames that we can use as parameters to the commands we call in our
           script
 
-```shell
-    echo *.py # all files with  filenames ending .py
-    echo c* # all files starting with letter `c`
-    echo * # all files 
-    echo ????.py # .py files with 4 characters resembling `?`
+```text
+echo *.py # all files with  filenames ending .py
+echo c* # all files starting with letter `c`
+echo * # all files 
+echo ????.py # .py files with 4 characters resembling `?`
 ```
 
 - Conditional execution in Bash
@@ -932,12 +932,11 @@ What you'll do
     - `tail` and `cat` are almost similarly command printing the content of the file
     - `tail` prints last lines
 
-```shell
-    tail sample.txt
-    tail sample.txt | cut -d' ' -f5-
-    cut -d' ' -f5- sample.txt | sort | uniq -c | sort -nr | head
-    # -d' ' : delimiter as space 
-    # 
+```text
+tail sample.txt
+tail sample.txt | cut -d' ' -f5-
+cut -d' ' -f5- sample.txt | sort | uniq -c | sort -nr | head
+# -d' ' : delimiter as space 
 ```
 
 - Choosing between Bash and Python
@@ -957,7 +956,7 @@ What you'll do
 * Redirection: A process of sending a stream to a different destination
 * Signals: Tokens delivered to running processes to indicate a desired action
 
-### Qwiklabs Assignment
+### Qwiklab Assignment
 
 In this lab, you'll change the username of your coworker Jane Doe from "jane" to "jdoe" in compliance with company's
 naming policy. The username change has already been done. However, some files that were named with Jane's previous
@@ -974,8 +973,8 @@ take care of the necessary rename operations.
 **Prerequisites**
 
 - cat
-- grep : grep [pattern] [file-directory/file-location]
-- cut : cut [options] [file] ; cut -d [delimiter] -f [field number]
+- grep : grep [pattern] (file-directory/file-location)
+- cut : cut [options] (file) ; cut -d [delimiter] -f [field number]
 
 **Linux I/O Redirection**
 
@@ -1038,7 +1037,7 @@ format that Dakota’s manager needs: (123) 456-7890. Dakota begins to code.
 He writes up a simple Python script to read the dataset from a file and output the corrected phone numbers using his
 regular expressions:
 
-```python
+```text
 import re
 
 with open("data/phones.csv", "r") as phones:
@@ -1047,7 +1046,7 @@ with open("data/phones.csv", "r") as phones:
         print(new_phone)
 ```
 
-```zsh
+```text
     (123) 456-7890
     (123) 456-7890
     (123) 456-7890
@@ -1108,23 +1107,24 @@ Success! Dakota gets the project done in a single day and is now the office hero
     - count how many errors of same type of errors, use dictionaries for this
     - then sort different criteria
     - output is the couple of csv files
-    - then call csv_to_html.py file pass parameters to it either by python / bash, recomended bash
-- Qwiklabs assessment
+    - then call csv_to_html.py file pass parameters to it either by python / bash, recommended bash
+- Qwiklab assessment
 
-    Imagine your company uses a server that runs a service called ticky, an internal ticketing system. The service logs
-    events to syslog, both when it runs successfully and when it encounters errors.
+  Imagine your company uses a server that runs a service called `ticky`, an internal ticketing system. The service logs
+  events to syslog, both when it runs successfully and when it encounters errors.
 
-    The service's developers need your help getting some information from those logs so that they can better understand how
-    their software is used and how to improve it. So, for this lab, you'll write some automation scripts that will process
-    the system log and generate reports based on the information extracted from the log files.
+  The service's developers need your help getting some information from those logs so that they can better understand
+  how
+  their software is used and how to improve it. So, for this lab, you'll write some automation scripts that will process
+  the system log and generate reports based on the information extracted from the log files.
 
-    **What you'll do**
+  **What you'll do**
     - Use regex to parse a log file
     - Append and modify values in a dictionary
     - Write to a file in CSV format
     - Move files to the appropriate directory for use with the CSV->HTML converter
 
-- Log ananlysis using regular expressions
+- Log analysis using regular expressions
 - Graded Assessment
 
 ### Job searching and Professional Networking
